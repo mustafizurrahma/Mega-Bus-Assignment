@@ -5,10 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bus Ticket</title>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="sweetalert2/dist/sweetalert2.min.css">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -31,28 +39,30 @@
 
         <div class="booking-content">
             <h1>Mega City Bus</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book.</p>
         </div>
 
 
-        <div class="booking-form">
+        <div class="booking-form" id="ticketBookingForm">
             <h3>Explore By Bus</h3>
 
             <div class="inputs">
                 <div class="input-group">
                     <label" for="">From</label>
-                    <input class="inp-style" type="text" name="" placeholder="Dhaka">
+                        <input class="inp-style" type="text" name="" placeholder="Kushtia">
                 </div>
                 <div class="input-group">
                     <label" for="">From</label>
-                    <input class="inp-style" type="text" name="" placeholder="Chittagone">
+                        <input class="inp-style" type="text" name="" placeholder="Meherpur">
                 </div>
             </div>
 
             <div class="inputs">
                 <div class="input-group">
                     <label" for="">Departure</label>
-                    <input class="inp-style" type="date" name="">
+                        <input class="inp-style" type="date" name="">
                 </div>
                 <div class="input-group">
                     <label for="">Return</label>
@@ -61,21 +71,25 @@
             </div>
             <div class="inputs">
                 <div class="input-group f-class">
-                <div>
-                    <label for="">First Class ($150)</label>
-                    <input class="inp-style inp-width" type="number" name="">
-                </div>
-                <div class="plus-minus-btn">
-                    <p>+ -</p>
-                </div>
-            </div>
-                <div class="input-group f-class">
                     <div>
-                        <label for="">Economy ($100)</label>
-                        <input class="inp-style inp-width" type="number" name="">
+                        <label for="">First Class <span id="busTotalMegaTicket">($150)</span> </label>
+                        <input id="busTicketValue" class="inp-style inp-width" type="text" name="" value="0">
                     </div>
                     <div class="plus-minus-btn">
-                        <p> <span>+</span> <span>-</span> </p>
+                        <button onclick="megaBusTicket('bus', true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                        <br>
+                        <button onclick="megaBusTicket('bus', false);" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                    </div>
+                </div>
+                <div class="input-group f-class">
+                    <div>
+                        <label for="">Economy <span id="economyTotalMegaTicket">($100)</span> </label>
+                        <input id="economyTicketValue" class="inp-style inp-width" type="text" name="" value="0">
+                    </div>
+                    <div class="plus-minus-btn">
+                        <button onclick="megaBusTicket('economy', true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                        <br>
+                        <button onclick="megaBusTicket('economy', false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
                     </div>
                 </div>
 
@@ -86,7 +100,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$500</p>
+                        <p id='subTotalAmount'>$500</p>
                     </div>
                 </div>
 
@@ -95,7 +109,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$50</p>
+                        <p id="amountVat">$50</p>
                     </div>
                 </div>
                 <hr>
@@ -104,15 +118,18 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$550</p>
+                        <p id="totalTicketPrice">$550</p>
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button onclick="submitConformation()" type="submit" class="btn btn-style">Buy Now Ticket</button>
         </div>
     </main>
 
     <!--Thank You-->
+    <script src="mega-bus.js"></script>
+    <script src="sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>
